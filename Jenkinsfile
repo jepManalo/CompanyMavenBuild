@@ -20,14 +20,9 @@ pipeline {
 					try {
 						bat 'mvn test'
 					} finally {
+						echo 'Posting Results...'
 						junit '**/build/test-results/test/*.xml'
-					}
-				}
-
-				echo 'Posting Results...'
-				post {
-					success {
-						junit '**/target/surefire-reports/TEST-*.xml'
+// 						junit '**/target/surefire-reports/TEST-*.xml'
 					}
 				}
 			}
