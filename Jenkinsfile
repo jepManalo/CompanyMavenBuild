@@ -7,9 +7,9 @@ pipeline {
 				echo 'Checking out repository...'
 				checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jepManalo/CompanyMavenBuild']]])
 				echo 'Validating source code...'
-				sh 'mvn validate'
+				bat 'mvn validate'
 				echo 'Compiling source code...'
-				sh 'mvn compile'
+				bat 'mvn compile'
 			}
 		}
 
@@ -18,7 +18,7 @@ pipeline {
 				echo 'Running UI Tests...'
 				script {
 					try {
-						sh 'mvn test'
+						bat 'mvn test'
 					} finally {
 						junit '**/build/test-results/test/*.xml'
 					}
@@ -36,7 +36,7 @@ pipeline {
 		stage('Clean Build') {
 			steps {
 				echo 'Cleaning last build...'
-				sh 'mvn clean'
+				bat 'mvn clean'
 			}
 		}
 	}
