@@ -21,8 +21,8 @@ pipeline {
 						bat 'mvn test'
 					} finally {
 						echo 'Posting Results...'
-						junit '**/build/test-results/test/*.xml'
-// 						junit '**/target/surefire-reports/TEST-*.xml'
+// 						junit '**/build/test-results/test/*.xml'
+						junit '**/target/surefire-reports/TEST-*.xml'
 					}
 				}
 			}
